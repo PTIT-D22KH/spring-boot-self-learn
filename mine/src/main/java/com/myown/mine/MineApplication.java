@@ -1,0 +1,18 @@
+package com.myown.mine;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+public class MineApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MineApplication.class, args);
+		// System.out.println("Hello");
+	}
+	@RequestMapping("/hello")
+	public String hello() {
+		return "Hello world!";
+	}
+}

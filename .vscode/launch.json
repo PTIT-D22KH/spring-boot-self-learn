@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MineApplication<mine>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.myown.mine.MineApplication",
+            "projectName": "mine",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
