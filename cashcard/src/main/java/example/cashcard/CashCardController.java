@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.net.URI;
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/cashcards")
@@ -25,7 +28,12 @@ class CashCardController {
         }
     }
     @PostMapping
-    private ResponseEntity<Void> createCashCard() {
-        return null;
+    private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
+        CashCard savedCashCard = cashCardRepository.save(newCashCardRequest);
+        URI locationOfNewCashCard = ucb
+                    .path("cashcards/{id}")
+                    .buildAndExpand(savedCashCard.id())
+                    .toUri();
+        return ResponseEntity.created(locationOfNewCashCard).build();
     }
 }
